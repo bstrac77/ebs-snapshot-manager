@@ -42,7 +42,7 @@ def lambda_handler(event, context):
             current_time = datetime.datetime.utcnow()
             current_time_str = current_time.strftime("%h %d, %H:%M")
 
-            description = "%s Snapshot - created by Grasshopper Snapshot Manager on %s UTC for %s" % (instance_name, current_time_str, instance['InstanceId'])
+            description = "%s Snapshot - created by EBS Snapshot Manager on %s UTC for %s" % (instance_name, current_time_str, instance['InstanceId'])
 
             delete_date = datetime.date.today() + datetime.timedelta(days=retention_days)
             delete_fmt = delete_date.strftime('%Y-%m-%d')
