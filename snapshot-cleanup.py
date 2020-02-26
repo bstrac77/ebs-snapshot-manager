@@ -36,5 +36,5 @@ def lambda_handler(event, context):
 
 
     for snap in snapshot_response['Snapshots']:
-        print "Deleting snapshot %s" % snap['SnapshotId']
+        print("Deleting snapshot %s" % snap['SnapshotId'])
         ec.delete_snapshot(SnapshotId=snap['SnapshotId'])

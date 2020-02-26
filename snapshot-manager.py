@@ -19,7 +19,7 @@ def lambda_handler(event, context):
             for r in reservations
         ], [])
 
-    print "Found %d instances that need backing up" % len(instances)
+    print("Found %d instances that need backing up" % len(instances))
 
     for instance in instances:
         try:
@@ -36,8 +36,7 @@ def lambda_handler(event, context):
             if dev.get('Ebs', None) is None:
                 continue
             vol_id = dev['Ebs']['VolumeId']
-            print "Found EBS volume %s on instance %s" % (
-                vol_id, instance['InstanceId'])
+            print("Found EBS volume %s on instance %s" % (vol_id, instance['InstanceId']))
 
             current_time = datetime.datetime.utcnow()
             current_time_str = current_time.strftime("%h %d, %H:%M")
@@ -62,10 +61,10 @@ def lambda_handler(event, context):
                 VolumeId=vol_id, Description=description, TagSpecifications=tag_spec
             )
 
-            print "Retaining snapshot %s of volume %s from instance name %s, id %s for %d days" % (
+            print("Retaining snapshot %s of volume %s from instance name %s, id %s for %d days" % (
                 snap['SnapshotId'],
                 vol_id,
                 instance_name,
                 instance['InstanceId'],
                 retention_days
-            )
+            ))
